@@ -26,6 +26,9 @@ public class CnabUtil {
         var fields = CnabTxt.class.getDeclaredFields();
 
         list.forEach(s -> {
+
+            if (s.length() < 70) throw new RuntimeException("Linha com menos de 80 caracteres.");
+
             CnabTxt linha = new CnabTxt();
             Arrays.stream(fields).forEach(field -> {
                 //obtem as annotations
