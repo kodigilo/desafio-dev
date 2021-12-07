@@ -2,6 +2,7 @@ package com.example.cnab.service;
 
 
 import com.example.cnab.domain.CnabTxt;
+import com.example.cnab.domain.Loja;
 import com.example.cnab.repository.CnabRepository;
 import com.example.cnab.util.Util;
 import com.google.gson.Gson;
@@ -16,7 +17,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -68,6 +71,23 @@ public class CnabService {
         int offset = pageRequest.getPageNumber() * pageRequest.getPageSize();
         int limit = pageRequest.getPageSize();
         return sql + " LIMIT " + offset + "," + limit;
+    }
+
+
+    public void calculaSaldo(Loja loja,List<CnabTxt> transacoes){
+        loja.setTransacoes(transacoes.stream().sorted((d1,d2) -> d1.getDataHorario().compareTo(d2.getDataHorario())).filter(x->x.getLoja().equals(loja.getLoja())).collect(Collectors.toList()));
+    }
+    public void calculaSaldo(Loja loja){
+        loja.getTransacoes().stream().sorted((d1,d2) -> d1.getDataHorario().compareTo(d2.getDataHorario())).forEach(cnabTxt -> {
+            switch (cnabTxt.getTipoEnum().getSinal()){
+                case "+" :
+                    loja.setSaldo(BigDecimal.valueOf(loja.getSaldo().doubleValue() + cnabTxt.getValor().doubleValue()));
+                    break;
+                case "-" :
+                    loja.setSaldo(BigDecimal.valueOf(loja.getSaldo().doubleValue() - cnabTxt.getValor().doubleValue()));
+                    break;
+            }
+        });
     }
 
 }

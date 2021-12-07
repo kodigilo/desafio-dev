@@ -51,17 +51,8 @@ public class IndexController {
             var transacoes = service.all();
             var lojas = transacoes.stream().map(x-> new Loja(x.getLoja()) ).distinct().collect(Collectors.toList());
             lojas.forEach(loja -> {
-                loja.setTransacoes(transacoes.stream().sorted((d1,d2) -> d1.getDataHorario().compareTo(d2.getDataHorario())).filter(x->x.getLoja().equals(loja.getLoja())).collect(Collectors.toList()));
-                loja.getTransacoes().stream().sorted((d1,d2) -> d1.getDataHorario().compareTo(d2.getDataHorario())).forEach(cnabTxt -> {
-                    switch (cnabTxt.getTipoEnum().getSinal()){
-                        case "+" :
-                            loja.setSaldo(BigDecimal.valueOf(loja.getSaldo().doubleValue() + cnabTxt.getValor().doubleValue()));
-                            break;
-                        case "-" :
-                            loja.setSaldo(BigDecimal.valueOf(loja.getSaldo().doubleValue() - cnabTxt.getValor().doubleValue()));
-                            break;
-                    }
-                });
+                service.calculaSaldo(loja,transacoes);
+                service.calculaSaldo(loja);
             });
             return ResponseEntity.ok().body(lojas);
         }catch (Exception e){
