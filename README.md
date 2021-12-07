@@ -1,9 +1,8 @@
 # Desafio programação - para vaga desenvolvedor
 
-Por favor leiam este documento do começo ao fim, com muita atenção.
-O intuito deste teste é avaliar seus conhecimentos técnicos em programação.
-O teste consiste em parsear [este arquivo de texto(CNAB)](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt) e salvar suas informações(transações financeiras) em uma base de dados a critério do candidato.
-Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
+Por favor leiam este documento do começo ao fim, com muita atenção. O intuito deste teste é avaliar seus conhecimentos técnicos em programação. O teste consiste em
+parsear [este arquivo de texto(CNAB)](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt) e salvar suas informações(transações financeiras) em uma base de dados a
+critério do candidato. Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
 
 # Instruções de entrega do desafio
 
@@ -13,10 +12,10 @@ Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quise
 
 # Descrição do projeto
 
-Você recebeu um arquivo CNAB com os dados das movimentações finanaceira de várias lojas.
-Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
+Você recebeu um arquivo CNAB com os dados das movimentações finanaceira de várias lojas. Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
 
-Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt), normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
+Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt), normalize os dados e armazene-os em um
+banco de dados relacional e exiba essas informações em tela.
 
 **Sua aplicação web DEVE:**
 
@@ -46,7 +45,7 @@ Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https:
 | Data  | 2  | 9 | 8 | Data da ocorrência
 | Valor | 10 | 19 | 10 | Valor da movimentação. *Obs.* O valor encontrado no arquivo precisa ser divido por cem(valor / 100.00) para normalizá-lo.
 | CPF | 20 | 30 | 11 | CPF do beneficiário
-| Cartão | 31 | 42 | 12 | Cartão utilizado na transação 
+| Cartão | 31 | 42 | 12 | Cartão utilizado na transação
 | Hora  | 43 | 48 | 6 | Hora da ocorrência atendendo ao fuso de UTC-3
 | Dono da loja | 49 | 62 | 14 | Nome do representante da loja
 | Nome loja | 63 | 81 | 19 | Nome da loja
@@ -74,7 +73,8 @@ Seu projeto será avaliado de acordo com os seguintes critérios.
 3. Você seguiu as instruções de envio do desafio?
 4. Qualidade e cobertura dos testes unitários.
 
-Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto.
+Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de
+seu projeto.
 
 # Referência
 
