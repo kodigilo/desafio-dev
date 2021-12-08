@@ -21,13 +21,6 @@
 
             <div class="linha">
                 <div class="coluna">
-                    <h2>Transações</h2>
-                    <div v-if="transacoesMsg">
-                        <div class="msg msg-erro">{{ transacoesMsg }}</div>
-                    </div>
-                    <Transacao :transacoes="transacoes"></Transacao>
-                </div>
-                <div class="coluna">
                     <h2>Lojas</h2>
                     <div v-if="lojasMsg">
                         <div class="msg msg-erro">{{ lojasMsg }}</div>
@@ -46,6 +39,13 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+                <div class="coluna">
+                    <h2>Transações</h2>
+                    <div v-if="transacoesMsg">
+                        <div class="msg msg-erro">{{ transacoesMsg }}</div>
+                    </div>
+                    <Transacao :transacoes="transacoes"></Transacao>
                 </div>
             </div>
 
@@ -77,10 +77,13 @@ export default {
         }
     },
     mounted() {
-        this.getLojas();
-        this.getTransacoes();
+        this.start()
     },
     methods: {
+        start : function (){
+            this.getLojas();
+            this.getTransacoes();
+        },
         getTransacoes: function () {
             axios.get('v1/paginacao').then((response) => {
                 this.transacoes = response.data.content
@@ -110,10 +113,13 @@ export default {
                 this.result = 1
                 this.msg = response.data;
                 console.log(response)
+                this.start()
             }).catch((erro) => {
                 this.result = 2
+                this.msg = "Erro ao processar arquivo, verifique"
                 console.log(erro)
                 console.log({erro})
+                this.start()
             })
         },
         loadFile: function () {

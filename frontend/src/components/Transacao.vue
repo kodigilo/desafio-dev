@@ -15,7 +15,7 @@
                 <td>{{ transacao.cartao }}</td>
                 <td>{{ transacao.cpf }}</td>
                 <td>{{ transacao.tipoEnum }}</td>
-                <td>{{ transacao.valor | currency }}</td>
+                <td>{{ transacao.sinal }}{{ transacao.valor | currency }}</td>
                 <td>{{ transacao.loja }}</td>
                 <td>{{ transacao.donoLoja }}</td>
             </tr>

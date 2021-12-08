@@ -35,6 +35,10 @@ public class CnabTxt {
     private String loja;
 
 
+    public String getSinal(){
+        return tipoEnum.getSinal();
+    }
+
 
     public void setTipo(Integer tipo) {
         this.tipo = tipo;
