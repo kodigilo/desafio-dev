@@ -1,0 +1,36 @@
+version: '3.8'
+
+volumes:
+  data-volume:
+  cnab-mysql-data:
+    driver: local
+
+services:
+  springboot:
+    depends_on:
+      - banco-mysql-cnab
+    build: .
+    container_name: cnab_spring 
+    ports:
+      - 8080:8080
+    networks:
+      - cnab-mysql-network
+
+
+  banco-mysql-cnab:
+    image: mysql:8.0 
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - cnab-mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root@cnab@01
+      - MYSQL_DATABASE=cnab
+      - MYSQL_USER=user_cnab
+      - MYSQL_PASSWORD=EPcUUKctcJp0k33Pa
+    networks:
+      - cnab-mysql-network
+networks:
+  cnab-mysql-network: 
+    driver: bridge
