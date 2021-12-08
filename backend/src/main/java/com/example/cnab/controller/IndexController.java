@@ -31,7 +31,7 @@ public class IndexController {
     @ApiOperation(value = "Traz todos os registros com paginação" )
     @GetMapping("paginacao")
     public ResponseEntity<?> paginacao(
-            @RequestParam(value = "limit", required = false, defaultValue = "20") int limit,
+            @RequestParam(value = "limit", required = false, defaultValue = "200") int limit,
             @RequestParam(value = "page", required = false, defaultValue = "0") int page,
             @RequestParam(value = "orderby", required = false, defaultValue = "id") String orderby,
             @RequestParam(value = "order", required = false, defaultValue = "DESC") String order
