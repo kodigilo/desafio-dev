@@ -1,3 +1,58 @@
+# O Projeto
+
+Sistema completo para o processamento e verificação de transações financeiras de lojistas.
+
+## Backend - Spring Boot 
+
+- swagger
+- gson
+- lombok
+- junit
+
+#### <span style="color:red">IMPORTANTE</span>
+- Não é necessario subir dump no banco, a aplicação já cria as tabelas necessarias
+
+#### Swagger / Documentação da api
+http://localhost:8080/swagger-ui.html
+
+### Docker
+- Sobe o serviço completo banco, back e front
+```
+docker-compose up --build -d
+```
+- API: http://localhost:8080/
+- Front: http://localhost:8081/
+
+### IDE
+- Precisa subir o serviço de mysql para usar com a IDE, para subir somente o banco
+```
+docker-compose up -d banco-mysql-cnab
+```
+- Adicionar nas environment variables da IDE 
+```
+SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/cnab?serverTimezone=America/Sao_Paulo&useLegacyDatetimeCode=false&enabledTLSProtocols=TLSv1.2
+```
+API: http://localhost:8080/
+
+## FrontEnd - Vue.js
+- moment
+- axios
+- vue2-filters
+### Docker
+- Sobe o serviço completo banco, back e front
+```
+docker-compose up --build -d
+```
+Front: http://localhost:8081/
+### NPM
+```
+npm install
+```
+```
+npm server
+```
+FRONT: http://localhost:8081/
+
 # Desafio programação - para vaga desenvolvedor
 
 Por favor leiam este documento do começo ao fim, com muita atenção. O intuito deste teste é avaliar seus conhecimentos técnicos em programação. O teste consiste em
